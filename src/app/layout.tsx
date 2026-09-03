@@ -1,30 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { connectToDatabase } from "@/lib/mongodb";
 
 export const metadata: Metadata = {
   title: "1Fi - Mutual Fund Backed EMI Plans",
   description: "Buy premium products with zero upfront liquidation using mutual fund backed EMI plans.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let isDbConnected = false;
-  try {
-    const db = await connectToDatabase();
-    isDbConnected = !!db;
-  } catch (err) {
-    isDbConnected = false;
-  }
-
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-slate-100/60 text-slate-900 antialiased">
-        <Navbar isDbConnected={isDbConnected} />
+        <Navbar />
         <main className="flex-1">{children}</main>
         <footer className="py-8 border-t border-slate-200 bg-white text-center text-xs text-slate-500">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
