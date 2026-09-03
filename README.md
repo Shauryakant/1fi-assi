@@ -1,33 +1,40 @@
 # 1Fi SDE1 Assignment - Dynamic Product & EMI Plans Web App
 
-A full-stack Next.js web application built with **MongoDB Atlas**, **React**, and **Tailwind CSS** that dynamically displays product variants and mutual fund backed EMI plans based on the 1Fi reference design.
-
-![1Fi EMI Design](https://raw.githubusercontent.com/placeholder/1fi-demo.png)
+A full-stack Next.js web application built with **React**, **Next.js 14 (App Router)**, **Tailwind CSS**, and **MongoDB Atlas** that dynamically displays product information, color/storage variants, and mutual-fund backed EMI plans based on the 1Fi reference design specification.
 
 ---
 
-## 🚀 Features
+## 🔗 Submission Links
 
-- **Dynamic Product Pages**: Unique URLs for products (e.g. `/products/iphone-17-pro`, `/products/samsung-s24-ultra`, `/products/macbook-pro-m3`).
-- **Interactive Variant Selection**: Live finish color swatches and storage capacity toggles (e.g., 256GB / 512GB).
-- **Mutual Fund Backed EMI Plans**: Dynamic calculation of monthly installments, interest rates (0% or 10.5%), and cashback callouts.
-- **Instant Pre-Approval Modal**: Interactive checkout flow allowing users to select an EMI plan and complete instant verification.
-- **MongoDB Atlas Integration**: Fully connected to MongoDB with Mongoose schema, automatic fallback mock data layer, and live seed scripts (`npm run seed` or `/api/seed`).
+- **GitHub Repository**: [https://github.com/Shauryakant/1fi-assi.git](https://github.com/Shauryakant/1fi-assi.git)
+- **Deployed Demo Link**: `https://1fi-assi.vercel.app` *(Replace with your deployed Vercel/Render link)*
+- **Demo Video Recording (2-5 mins)**: `[INSERT YOUR DEMO VIDEO LINK HERE (Google Drive / YouTube)]`
+
+---
+
+## ✨ Features & Core Functionality
+
+- **Dynamic Product Pages**: Unique URLs for each product (e.g. `/products/iphone-17-pro`, `/products/samsung-s24-ultra`, `/products/macbook-pro-m3`).
+- **Interactive Variant Selection**: Live finish color swatches (Cosmic Orange, Natural Titanium, Deep Navy) and storage capacity toggles (256GB, 512GB) that dynamically update product images and pricing.
+- **Mutual Fund Backed EMI Plans**: Dynamic calculation of monthly installments across 3, 6, 12, 24, 36, 48, and 60-month tenures with interest rates (0% or 10.5%) and green cashback badges (`Additional cashback of ₹7,500`).
+- **Pre-Approval Checkout Modal**: Interactive checkout drawer displaying the financial breakdown, loan terms, and instant pre-approval application form.
+- **Active Navigation Focus**: Top navbar dynamically highlights the current active page route based on `usePathname()`.
+- **Database & API Integration**: Data served from MongoDB via backend API route handlers with automatic dynamic fallback and live seeder scripts (`npm run seed` or `/api/seed`).
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React 18, Tailwind CSS, Lucide Icons
+- **Frontend**: React 18, Next.js 14 (App Router), Tailwind CSS, Lucide Icons, TypeScript
 - **Backend**: Next.js API Route Handlers (Node.js)
 - **Database**: MongoDB Atlas / Mongoose ORM
-- **Seeder**: TSX script + API endpoint
+- **Seeder**: TSX CLI script (`npm run seed`) & REST API (`POST /api/seed`)
 
 ---
 
-## 📁 Database Schemas
+## 📁 Database Schema
 
-### Product Schema (`Product`)
+Defined in [`src/models/Product.ts`](file:///d:/tb/1fi/src/models/Product.ts) and [`database/schema.json`](file:///d:/tb/1fi/database/schema.json):
 
 ```ts
 interface IVariant {
@@ -69,7 +76,7 @@ interface IProduct {
 ## 🌐 API Endpoints & Example Responses
 
 ### 1. `GET /api/products`
-Retrieves all products from the MongoDB database.
+Retrieves all products from the database.
 
 #### Example Response:
 ```json
@@ -113,7 +120,7 @@ Retrieves all products from the MongoDB database.
 ---
 
 ### 2. `GET /api/products/[slug]`
-Retrieves full details for a specific product by slug (e.g. `iphone-17-pro`).
+Retrieves product details and available EMI plans for a specific product by slug (e.g. `iphone-17-pro`).
 
 #### Example Response:
 ```json
@@ -124,6 +131,7 @@ Retrieves full details for a specific product by slug (e.g. `iphone-17-pro`).
     "name": "iPhone 17 Pro",
     "slug": "iphone-17-pro",
     "tag": "NEW",
+    "brand": "Apple",
     "variants": [...],
     "emiPlans": [...]
   }
@@ -133,7 +141,7 @@ Retrieves full details for a specific product by slug (e.g. `iphone-17-pro`).
 ---
 
 ### 3. `POST /api/seed`
-Reseeds the MongoDB database with default products and EMI plans.
+Reseeds the MongoDB database with default sample products and EMI plans.
 
 #### Example Response:
 ```json
@@ -146,13 +154,13 @@ Reseeds the MongoDB database with default products and EMI plans.
 
 ---
 
-## ⚙️ Setup & Run Instructions
+## ⚙️ Setup & Installation Instructions
 
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone <your-repo-url>
-cd 1fi-sde1-assignment
+git clone https://github.com/Shauryakant/1fi-assi.git
+cd 1fi-assi
 npm install
 ```
 
@@ -161,7 +169,8 @@ npm install
 Create a `.env.local` file in the root directory:
 
 ```env
-MONGODB_URI=mongodb+srv://udemy:udemy123@cluster0.ywipqhb.mongodb.net/1fi
+# MongoDB Atlas Connection String Example
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/1fi?retryWrites=true&w=majority
 ```
 
 ### 3. Seed Database
@@ -182,9 +191,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🧪 Verification & Build
+## 🧪 Production Build Verification
 
-To test building for production:
+To verify building for production:
 
 ```bash
 npm run build
