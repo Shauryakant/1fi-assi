@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Product",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "MongoDB ObjectId"
+    },
+    "name": {
+      "type": "string",
+      "example": "iPhone 17 Pro"
+    },
+    "slug": {
+      "type": "string",
+      "example": "iphone-17-pro"
+    },
+    "tag": {
+      "type": "string",
+      "example": "NEW"
+    },
+    "brand": {
+      "type": "string",
+      "example": "Apple"
+    },
+    "category": {
+      "type": "string",
+      "example": "Smartphones"
+    },
+    "description": {
+      "type": "string",
+      "example": "The ultimate iPhone with titanium design..."
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "color": { "type": "string", "example": "Cosmic Orange" },
+          "colorCode": { "type": "string", "example": "#e87a3e" },
+          "storage": { "type": "string", "example": "256GB" },
+          "mrp": { "type": "number", "example": 134900 },
+          "price": { "type": "number", "example": 127400 },
+          "image": { "type": "string" }
+        },
+        "required": ["id", "color", "colorCode", "storage", "mrp", "price", "image"]
+      }
+    },
+    "emiPlans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "tenureMonths": { "type": "number", "example": 3 },
+          "monthlyAmount": { "type": "number", "example": 44967 },
+          "interestRate": { "type": "number", "example": 0 },
+          "cashbackAmount": { "type": "number", "example": 7500 },
+          "cashbackDescription": { "type": "string", "example": "Additional cashback of ₹7,500" },
+          "isPopular": { "type": "boolean" }
+        },
+        "required": ["id", "tenureMonths", "monthlyAmount", "interestRate", "cashbackAmount", "cashbackDescription"]
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["name", "slug", "brand", "category", "description", "variants", "emiPlans"]
+}
