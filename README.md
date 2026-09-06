@@ -7,8 +7,8 @@ A full-stack Next.js web application built with **React**, **Next.js 14 (App Rou
 ## 🔗 Submission Links
 
 - **GitHub Repository**: [https://github.com/Shauryakant/1fi-assi.git](https://github.com/Shauryakant/1fi-assi.git)
-- **Deployed Demo Link**: `https://1fi-assi.vercel.app/` 
-- **Demo Video Recording (2-5 mins)**: `https://youtu.be/EAFL3t3NrDo`
+- **Deployed Demo Link**: [https://1fi-assi.vercel.app/](https://1fi-assi.vercel.app/)
+- **Demo Video Recording (2-5 mins)**: [https://youtu.be/EAFL3t3NrDo](https://youtu.be/EAFL3t3NrDo)
 
 ---
 
